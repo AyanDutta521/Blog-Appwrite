@@ -19,7 +19,7 @@ import Post from "./pages/Post";
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <App/>,
     children: [
       {
         path: '/',

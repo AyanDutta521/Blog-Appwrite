@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Button, Input, Select, RTE } from '../index'
 import appwriteService from '../../appwrite/config'
@@ -15,10 +15,14 @@ function PostForm({ post }) {
         }
     })
 
+    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate()
     const userData = useSelector(state => state.auth.userData)
 
     const submit = async (data) => {
+        if(loading) return;
+        setLoading(true);
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
 

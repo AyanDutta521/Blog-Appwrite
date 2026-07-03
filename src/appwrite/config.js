@@ -123,8 +123,8 @@ export class Service{
         }
     }
 
-    async getFilePreview(fileId){
-        return this.bucket.getFilePreview({
+    getFilePreview(fileId){
+        return this.bucket.getFileView({
             bucketId: conf.appwriteBucketId,
             fileId: fileId,
             
